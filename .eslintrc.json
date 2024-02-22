@@ -4,7 +4,10 @@
     "plugin:vitest-globals/recommended"
   ],
   "rules": {
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "no-unused-vars": "off",
+    "padded-blocks": "off",
+    "no-empty-function": "off",
   },
   "env": {
     "vitest-globals/env": true
