@@ -11,7 +11,6 @@ const fakeQuestionRepository: QuestionRepository = {
 
 test('create a new answer for a question', async () => {
   const questionUseCase = new CreateQuestionUseCase(fakeQuestionRepository)
-
   const { question } = await questionUseCase.execute({
     authorId: 'author-id',
     title: 'Question title',
