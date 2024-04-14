@@ -11,7 +11,7 @@ interface AnswerQuestionUseCaseRequest {
 
 export class AnswerQuestionUseCase {
   constructor(private answersRepository: AnswersRepository) {
-    //
+
   }
 
   async execute({
