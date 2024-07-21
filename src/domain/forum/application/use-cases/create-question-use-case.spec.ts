@@ -1,12 +1,10 @@
-import { QuestionRepository } from '../repositories/QuestionRepository';
-import { Question } from './../../enterprise/entities/Question';
+import { Question } from '../../enterprise/entities/question'
+import { QuestionRepository } from '../repositories/question-repository'
 
-import { CreateQuestionUseCase } from './CreateQuestionUseCase';
+import { CreateQuestionUseCase } from './create-question-use-case'
 
 const fakeQuestionRepository: QuestionRepository = {
-  create: async (question: Question) => {
-    // do nothing
-  },
+  create: async (question: Question) => {},
 }
 
 test('create a new answer for a question', async () => {
@@ -18,5 +16,5 @@ test('create a new answer for a question', async () => {
     content: 'Question content',
   })
 
-  expect(question.content).toEqual("Question content")
+  expect(question.content).toEqual('Question content')
 })

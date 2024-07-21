@@ -1,4 +1,4 @@
-import { UniqueEntityId } from './UniqueEntityId'
+import { UniqueEntityId } from './unique-entityId'
 
 export abstract class Entity<T> {
   private _id: UniqueEntityId

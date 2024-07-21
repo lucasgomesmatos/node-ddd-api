@@ -1,6 +1,6 @@
-import { UniqueEntityId } from '@/core/entities/UniqueEntityId'
-import { Question } from '../../enterprise/entities/Question'
-import { QuestionRepository } from '../repositories/QuestionRepository'
+import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { Question } from '../../enterprise/entities/question'
+import { QuestionRepository } from '../repositories/question-repository'
 
 interface CreateQuestionUseCaseRequest {
   authorId: string
@@ -13,7 +13,7 @@ interface CreateQuestionUseCaseResponse {
 }
 
 export class CreateQuestionUseCase {
-  constructor(private questionRepository: QuestionRepository) { }
+  constructor(private questionRepository: QuestionRepository) {}
 
   async execute({
     authorId,
