@@ -4,7 +4,9 @@ import { QuestionRepository } from '../repositories/question-repository'
 import { CreateQuestionUseCase } from './create-question-use-case'
 
 const fakeQuestionRepository: QuestionRepository = {
-  create: async (question: Question) => {},
+  create: async (question: Question) => {
+    console.log(question)
+  },
 }
 
 test('create a new answer for a question', async () => {
