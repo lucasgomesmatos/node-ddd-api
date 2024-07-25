@@ -64,7 +64,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get excerpt() {
-    return this.props.content.substring(0, 100).trimEnd().concat('...')
+    return this.content.substring(0, 100).trimEnd().concat('...')
   }
 
   set content(content: string) {
