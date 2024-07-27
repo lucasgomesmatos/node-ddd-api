@@ -1,18 +1,18 @@
 import { UniqueEntityId } from '@/core/entities/unique-entityId'
 import { makeAnswer } from 'test/factories/make-answer'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
-import { DeleteAnswerUseCase } from './delete-answer-use-case'
+import { EditAnswerUseCase } from './edit-answer-use-case'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
-let sut: DeleteAnswerUseCase
+let sut: EditAnswerUseCase
 
-describe('Delete Answer', () => {
+describe('Edit Answer', () => {
   beforeEach(() => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository()
-    sut = new DeleteAnswerUseCase(inMemoryAnswersRepository)
+    sut = new EditAnswerUseCase(inMemoryAnswersRepository)
   })
 
-  it('should be able to delete a answer', async () => {
+  it('should be able to edit a answer', async () => {
     const expectedId = 'answer-id'
     const expectedAuthorId = 'author-id'
     const newAnswer = makeAnswer(
@@ -27,12 +27,15 @@ describe('Delete Answer', () => {
     await sut.execute({
       answerId: expectedId,
       authorId: expectedAuthorId,
+      content: 'new content',
     })
 
-    expect(inMemoryAnswersRepository.items).toHaveLength(0)
+    expect(inMemoryAnswersRepository.items[0]).toMatchObject({
+      content: 'new content',
+    })
   })
 
-  it('should not be able to delete a answer if the authorId is different', async () => {
+  it('should not be able to edit a answer if the authorId is different', async () => {
     const expectedId = 'answer-id'
 
     const newAnswer = makeAnswer(
@@ -48,6 +51,7 @@ describe('Delete Answer', () => {
       return await sut.execute({
         answerId: expectedId,
         authorId: 'author-id',
+        content: 'new content',
       })
     }).rejects.toBeInstanceOf(Error)
   })
