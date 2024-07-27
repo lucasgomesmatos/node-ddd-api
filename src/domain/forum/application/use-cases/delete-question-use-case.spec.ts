@@ -13,16 +13,43 @@ describe('Delete Question', () => {
     sut = new DeleteQuestionUseCase(inMemoryQuestionsRepository)
   })
 
-  test('create be able to delete a question', async () => {
+  it('should be able to delete a question', async () => {
     const expectedId = 'question-id'
-    const newQuestion = makeQuestion({}, new UniqueEntityId(expectedId))
+    const expectedAuthorId = 'author-id'
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityId(expectedAuthorId),
+      },
+      new UniqueEntityId(expectedId),
+    )
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
     await sut.execute({
       questionId: expectedId,
+      authorId: expectedAuthorId,
     })
 
     expect(inMemoryQuestionsRepository.items).toHaveLength(0)
+  })
+
+  it('should not be able to delete a question if the authorId is different', async () => {
+    const expectedId = 'question-id'
+
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityId('another-author-id'),
+      },
+      new UniqueEntityId(expectedId),
+    )
+
+    await inMemoryQuestionsRepository.create(newQuestion)
+
+    expect(async () => {
+      return await sut.execute({
+        questionId: expectedId,
+        authorId: 'author-id',
+      })
+    }).rejects.toBeInstanceOf(Error)
   })
 })
