@@ -33,7 +33,7 @@ describe('Fetch Question QuestionComment', () => {
     expect(questionComments).toHaveLength(2)
   })
 
-  it('should be able to fetch paginated recent questions', async () => {
+  it('should be able to fetch paginated recent question comments ', async () => {
     for (let i = 1; i <= 22; i++) {
       await inMemoryQuestionCommentRepository.create(
         makeQuestionComment({
