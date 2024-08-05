@@ -3,11 +3,13 @@ import { UniqueEntityId } from '@/core/entities/unique-entityId'
 import { makeAnswerComment } from 'test/factories/make-answer-comment'
 import { InMemoryAnswerCommentsRepository } from 'test/repositories/in-memory-answer-comments-repository'
 import { DeleteCommentAnswerUseCase } from './delete-answer-comment-use-case'
+import { NotAllowedError } from './erros/not-allowed-error'
+import { ResourceNotFoundError } from './erros/resource-not-found-error'
 
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository
 let sut: DeleteCommentAnswerUseCase
 
-describe.skip('Delete Answer Comment', () => {
+describe('Delete Answer Comment', () => {
   beforeEach(() => {
     inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository()
     sut = new DeleteCommentAnswerUseCase(inMemoryAnswerCommentsRepository)
@@ -29,12 +31,13 @@ describe.skip('Delete Answer Comment', () => {
   })
 
   it('should not be able to delete a answer comment if the answer comment does not exist', async () => {
-    expect(async () => {
-      return await sut.execute({
-        authorId: 'author-id',
-        answerCommentId: 'invalid-answer-comment-id',
-      })
-    }).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      authorId: 'author-id',
+      answerCommentId: 'invalid-answer-comment-id',
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
   })
 
   it('should not be able to delete a answer comment if different author', async () => {
@@ -44,11 +47,12 @@ describe.skip('Delete Answer Comment', () => {
 
     await inMemoryAnswerCommentsRepository.create(newAnswerComment)
 
-    expect(async () => {
-      return await sut.execute({
-        authorId: 'invalid-author-id',
-        answerCommentId: newAnswerComment.id.toString(),
-      })
-    }).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      authorId: 'invalid-author-id',
+      answerCommentId: newAnswerComment.id.toString(),
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(NotAllowedError)
   })
 })
