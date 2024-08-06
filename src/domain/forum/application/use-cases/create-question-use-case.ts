@@ -9,7 +9,7 @@ interface CreateQuestionUseCaseRequest {
   content: string
 }
 
-type CreateQuestionUseCaseResponse = Either<unknown, { question: Question }>
+type CreateQuestionUseCaseResponse = Either<null, { question: Question }>
 
 export class CreateQuestionUseCase {
   constructor(private questionRepository: QuestionsRepository) {}

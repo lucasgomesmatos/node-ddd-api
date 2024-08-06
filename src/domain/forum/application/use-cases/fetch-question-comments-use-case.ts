@@ -8,7 +8,7 @@ interface FetchQuestionCommentsUseCaseRequest {
 }
 
 type FetchQuestionCommentsUseCaseResponse = Either<
-  unknown,
+  null,
   { questionComments: QuestionComment[] }
 >
 

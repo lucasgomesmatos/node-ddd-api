@@ -1,4 +1,4 @@
-// Error handling with Either
+// Error
 export class Left<L, R> {
   readonly value: L
 
@@ -6,16 +6,16 @@ export class Left<L, R> {
     this.value = value
   }
 
-  isLeft(): this is Left<L, R> {
-    return true
-  }
-
   isRight(): this is Right<L, R> {
     return false
   }
+
+  isLeft(): this is Left<L, R> {
+    return true
+  }
 }
 
-// Success handling with Either
+// Success
 export class Right<L, R> {
   readonly value: R
 
@@ -34,6 +34,10 @@ export class Right<L, R> {
 
 export type Either<L, R> = Left<L, R> | Right<L, R>
 
-export const left = <L, R>(value: L): Either<L, R> => new Left(value)
+export const left = <L, R>(value: L): Either<L, R> => {
+  return new Left(value)
+}
 
-export const right = <L, R>(value: R): Either<L, R> => new Right(value)
+export const right = <L, R>(value: R): Either<L, R> => {
+  return new Right(value)
+}
