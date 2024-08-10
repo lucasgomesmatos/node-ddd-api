@@ -33,7 +33,7 @@ export class ReadNotificationUseCase {
     if (recipientId !== notification.recipientId.toString()) {
       return left(new NotAllowedError())
     }
-
+    notification.read()
     this.notificationsRepository.save(notification)
 
     return right({ notification })
