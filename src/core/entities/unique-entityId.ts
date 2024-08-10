@@ -18,4 +18,16 @@ export class UniqueEntityId {
   get value(): string {
     return this._value
   }
+
+  equals(id: UniqueEntityId) {
+    if (id === this) {
+      return true
+    }
+
+    if (id.value === this._value) {
+      return true
+    }
+
+    return false
+  }
 }
