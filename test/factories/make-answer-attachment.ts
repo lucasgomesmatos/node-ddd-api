@@ -1,7 +1,7 @@
-import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { UniqueEntityId } from '@/core//entities/unique-entityId'
 import {
-  AnswerAttachment,
-  AnswerAttachmentProps,
+    AnswerAttachment,
+    AnswerAttachmentProps,
 } from '@/domain/forum/enterprise/entities/answer-attachment'
 
 export function makeAnswerAttachment(

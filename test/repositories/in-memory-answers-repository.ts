@@ -1,4 +1,4 @@
-import { PaginationParams } from '@/core/repositories/pagination-params'
+import { PaginationParams } from '@/core//repositories/pagination-params'
 import { AnswerAttachmentRepository } from '@/domain/forum/application/repositories/answer-attachments-repository'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
 import { Answer } from '@/domain/forum/enterprise/entities/answer'

@@ -1,9 +1,9 @@
-import { Either, left, right } from '@/core/either/either'
-import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { Either, left, right } from '@/core//either/either'
+import { UniqueEntityId } from '@/core//entities/unique-entityId'
+import { ResourceNotFoundError } from '@/core/errors/erros/resource-not-found-error'
 import { QuestionComment } from '../../enterprise/entities/question-comment'
 import { QuestionCommentsRepository } from '../repositories/question-comments-repository'
 import { QuestionsRepository } from '../repositories/questions-repository'
-import { ResourceNotFoundError } from './erros/resource-not-found-error'
 
 interface CommentOnQuestionUseCaseRequest {
   authorId: string

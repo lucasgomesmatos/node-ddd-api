@@ -1,11 +1,11 @@
 import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 
-import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { UniqueEntityId } from '@/core//entities/unique-entityId'
+import { NotAllowedError } from '@/core/errors/erros/not-allowed-error'
 import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
 import { InMemoryQuestionAttachmentRepository } from 'test/repositories/in-memory-question-attachments-repository'
 import { EditQuestionUseCase } from './edit-question-use-case'
-import { NotAllowedError } from './erros/not-allowed-error'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository

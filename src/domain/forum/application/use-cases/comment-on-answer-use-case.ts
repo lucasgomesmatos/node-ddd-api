@@ -1,9 +1,9 @@
-import { Either, left, right } from '@/core/either/either'
-import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { Either, left, right } from '@/core//either/either'
+import { UniqueEntityId } from '@/core//entities/unique-entityId'
+import { NotAllowedError } from '@/core/errors/erros/not-allowed-error'
 import { AnswerComment } from '../../enterprise/entities/answer-comment'
 import { AnswerCommentsRepository } from '../repositories/answer-comments-repository'
 import { AnswersRepository } from '../repositories/answers-repository'
-import { NotAllowedError } from './erros/not-allowed-error'
 
 interface CommentOnAnswerUseCaseRequest {
   authorId: string

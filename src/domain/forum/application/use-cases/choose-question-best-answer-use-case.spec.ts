@@ -1,3 +1,4 @@
+import { NotAllowedError } from '@/core/errors/erros/not-allowed-error'
 import { makeAnswer } from 'test/factories/make-answer'
 import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
@@ -5,7 +6,6 @@ import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questio
 import { InMemoryAnswerAttachmentRepository } from './../../../../../test/repositories/in-memory-answer-attachments-repository'
 import { InMemoryQuestionAttachmentRepository } from './../../../../../test/repositories/in-memory-question-attachments-repository'
 import { ChooseQuestionBestAnswerUseCase } from './choose-question-best-answer-use-case'
-import { NotAllowedError } from './erros/not-allowed-error'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository

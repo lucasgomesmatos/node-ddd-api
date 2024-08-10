@@ -1,5 +1,5 @@
-import { Either, right } from '@/core/either/either'
-import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { Either, right } from '@/core//either/either'
+import { UniqueEntityId } from '@/core//entities/unique-entityId'
 import { Answer } from '../../enterprise/entities/answer'
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment'
 import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachment-list'

@@ -1,4 +1,4 @@
-import { UniqueEntityId } from '@/core/entities/unique-entityId'
+import { UniqueEntityId } from '@/core//entities/unique-entityId'
 import { Answer, AnswerProps } from '@/domain/forum/enterprise/entities/answer'
 import { faker } from '@faker-js/faker'
 
